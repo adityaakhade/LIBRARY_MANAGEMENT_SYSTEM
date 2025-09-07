@@ -1,0 +1,12 @@
+-- View: Overdue Books
+SELECT * FROM OverdueBooks;
+
+-- Most Borrowed Books
+SELECT b.TITLE, COUNT(t.TRANSACTION_ID) AS TimesBorrowed
+FROM BOOKS b
+LEFT JOIN TRANSACTIONS t ON b.BOOK_ID = t.BOOK_ID
+GROUP BY b.TITLE
+ORDER BY TimesBorrowed DESC;
+
+-- Total Fine Collected
+SELECT SUM(FINE_AMOUNT) AS TotalFineCollected FROM TRANSACTIONS;
